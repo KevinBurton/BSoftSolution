@@ -21,8 +21,16 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Remove="ClientApp\src\app\shared\tamugeocode.ts" />
+    <None Remove="ClientApp\src\app\shared\tamuaddress.ts" />
+    <None Remove="ClientApp\src\app\shared\tamuoutputgeocode.ts" />
   </ItemGroup>
 
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\shared\tamugeocode.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\tamuaddress.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\tamuoutputgeocode.ts" />
+  </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
