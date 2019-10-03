@@ -10,7 +10,7 @@ export class GeoProcessingComponent {
     constructor(private processor: GeoProcessor) {
 
     }
-    location: ICoordinate[];
+    public locations: ICoordinate[];
     errorMessage: string = '';
     geocodeInput: string = '';
     processGeocodeInput(): void {
@@ -18,7 +18,7 @@ export class GeoProcessingComponent {
         this.processor.Geocode(this.geocodeInput).
             subscribe({
                 next: loc => {
-                    this.location = loc;
+                    this.locations = loc;
                     loc.forEach(l => console.log(`Latitude:${l.latitude} Longitude:${l.longitude}`));
                 },
                 error: err => this.errorMessage = err
