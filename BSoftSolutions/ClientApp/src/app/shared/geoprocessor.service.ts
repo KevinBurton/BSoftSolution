@@ -13,7 +13,7 @@ export class GeoProcessor {
     constructor(private http: HttpClient) {
 
     }
-    public Geocode(_locationDescription: string): Observable<ICoordinate> {
+    public Geocode(_locationDescription: string): Observable<ICoordinate[]> {
         const TAMMapsKey: string = '22f8bcc7f57b47d38700fbfa2a759a2e';
         let regex: RegExp = /([A-Za-z0-9 -]+)\s*,\s*([A-Za-z]+)/g;
         let m: RegExpExecArray = regex.exec(_locationDescription);
