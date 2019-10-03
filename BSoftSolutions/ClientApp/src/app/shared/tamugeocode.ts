@@ -6,7 +6,7 @@ export class tamugeocode {
     public TransactionId: string;
     public Version: string;
     public QueryStatusCodeValue: string;
-    public FeatureMatchingResultValue: string;
+    public FeatureMatchingResultType: string;
     public FeatureMatchingResultCount: number;
     public TimeTaken: string;
     public ExceptionOccured: boolean;
