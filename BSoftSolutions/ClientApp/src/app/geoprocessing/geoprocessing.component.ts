@@ -19,7 +19,7 @@ export class GeoProcessingComponent {
             subscribe({
                 next: loc => {
                     this.location = loc;
-                    console.log(`Latitude:${loc[0].latitude} Longitude:${loc[0].longitude}`);
+                    loc.forEach(l => console.log(`Latitude:${l.latitude} Longitude:${l.longitude}`));
                 },
                 error: err => this.errorMessage = err
             });
