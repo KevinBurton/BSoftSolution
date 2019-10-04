@@ -1,0 +1,36 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appService_BSoftSolutions20191004045512_name": {
+      "type": "string"
+    },
+    "appServicePlan_ServicePlan0e4362dc-83a0_location": {
+      "type": "string"
+    },
+    "appServicePlan_ServicePlan0e4362dc-83a0_name": {
+      "type": "string"
+    },
+    "appServicePlan_ServicePlan0e4362dc-83a0_resourceGroup": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "location": "[parameters('appServicePlan_ServicePlan0e4362dc-83a0_location')]",
+      "name": "[parameters('appService_BSoftSolutions20191004045512_name')]",
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2015-08-01",
+      "tags": {
+        "[concat('hidden-related:', resourceId(parameters('appServicePlan_ServicePlan0e4362dc-83a0_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_ServicePlan0e4362dc-83a0_name')))]": "empty"
+      },
+      "kind": "app",
+      "properties": {
+        "name": "[parameters('appService_BSoftSolutions20191004045512_name')]",
+        "kind": "app",
+        "httpsOnly": true,
+        "serverFarmId": "[resourceId(parameters('appServicePlan_ServicePlan0e4362dc-83a0_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_ServicePlan0e4362dc-83a0_name'))]"
+      }
+    }
+  ]
+}
