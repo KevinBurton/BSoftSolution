@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using BSoftSolutions.Models;
 
 namespace BSoftSolutions.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Weather")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -24,6 +25,8 @@ namespace BSoftSolutions.Controllers
         }
 
         [HttpGet]
+        [Route("")]
+        [Route("Get")]  
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();

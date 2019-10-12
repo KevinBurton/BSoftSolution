@@ -1,6 +1,6 @@
 using System;
 
-namespace BSoftSolutions
+namespace BSoftSolutions.Models
 {
     public class WeatherForecast
     {

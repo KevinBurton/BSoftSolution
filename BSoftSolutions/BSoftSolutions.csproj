@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,12 +25,20 @@
     <None Remove="ClientApp\src\app\shared\tamugeocode.ts" />
     <None Remove="ClientApp\src\app\shared\tamuaddress.ts" />
     <None Remove="ClientApp\src\app\shared\tamuoutputgeocode.ts" />
+    <None Remove="ClientApp\src\app\shared\movie.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\shared\tamugeocode.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\tamuaddress.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\tamuoutputgeocode.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\movie.service.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\movie\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Models\" />
+    <Folder Include="Implementations\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
