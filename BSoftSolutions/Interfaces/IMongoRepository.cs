@@ -10,7 +10,6 @@ namespace BSoftSolutions.Interfaces
     bool Open();
     void Close();
     IEnumerable<string> DatabaseList();
-    IEnumerable<string> CollectionList();
-    string Database { get; set; }
+    IEnumerable<string> CollectionList(string dbName);
   }
 }

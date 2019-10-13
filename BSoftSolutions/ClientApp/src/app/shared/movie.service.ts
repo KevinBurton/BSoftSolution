@@ -10,10 +10,10 @@ export class MovieProcessor {
     constructor(private http: HttpClient) {
 
     }
-    public DbList(): Observable<string[]> {
-        let url: string = '/Movie/DBList';
+    public DatabaseList(): Observable<string[]> {
+        let url: string = '/Movie/DatabaseList';
         return this.http.get<any>(url).pipe(
-            tap((data) => console.log('DB List All: ' + JSON.stringify(data))),
+            tap((data) => console.log(`Database List: ${data.length}`)),
             catchError(this.handleError)
         );
     }

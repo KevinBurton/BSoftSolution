@@ -12,11 +12,12 @@ export class MovieComponent {
     errorMessage: string = '';
     geocodeInput: string = '';
     movieList: string[] = [];
-    getDbList(): void {
-        this.processor.DbList().
+    databaseList: string[] = [];
+    getDatabaseList(): void {
+        this.processor.DatabaseList().
             subscribe({
                 next: loc => {
-                    loc.forEach(l => console.log(`DB Name:${l}`));
+                    this.databaseList = [...loc];
                 },
                 error: err => this.errorMessage = err
             });

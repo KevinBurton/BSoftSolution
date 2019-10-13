@@ -22,7 +22,7 @@ namespace BSoftSolutions.Controllers
     }
     // GET: /DBList
     [HttpGet]
-    [Route("DBList")]
+    [Route("DatabaseList")]
     public IEnumerable<string> DBList()
     {
         var repository = new MongoRepository(ConnectionStrings.MongoDbConnectionString,ConnectionStrings.MongoDbName, ConnectionStrings.MongoCollectionName);

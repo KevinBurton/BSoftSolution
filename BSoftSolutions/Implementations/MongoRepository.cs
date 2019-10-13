@@ -51,14 +51,9 @@ namespace BSoftSolutions.Implementations
       throw new NotImplementedException();
     }
 
-    public IEnumerable<string> CollectionList()
+    public IEnumerable<string> DatabaseList()
     {
-      throw new NotImplementedException();
-    }
-
-    IEnumerable<string> queryDbList(MongoClient client)
-    {
-      using (IAsyncCursor<BsonDocument> cursor = client.ListDatabases())
+      using (IAsyncCursor<BsonDocument> cursor = MongoClient.ListDatabases())
       {
         while (cursor.MoveNext())
         {
@@ -69,13 +64,10 @@ namespace BSoftSolutions.Implementations
         }
       }
     }
-    public IEnumerable<string> DatabaseList()
-    {
-      return queryDbList(MongoClient);
-    }
 
-    IEnumerable<string> queryCollectionList(IMongoDatabase db)
+    public IEnumerable<string> CollectionList(string dbName)
     {
+      IMongoDatabase db = MongoClient.GetDatabase(dbName);
       using (IAsyncCursor<string> cursor = db.ListCollectionNames())
       {
         while (cursor.MoveNext())
@@ -86,11 +78,6 @@ namespace BSoftSolutions.Implementations
           }
         }
       }
-    }
-    public IEnumerable<string> CollectionList(string dbName)
-    {
-      IMongoDatabase db = MongoClient.GetDatabase(dbName);
-      return queryCollectionList(db);
     }
     public IEnumerable<string> MovieList()
     {
@@ -103,6 +90,26 @@ namespace BSoftSolutions.Implementations
       }
       catch(Exception e)
       {
+        /*
+             at MongoDB.Bson.Serialization.Serializers.StringSerializer.DeserializeValue(BsonDeserializationContext context, BsonDeserializationArgs args)
+             at MongoDB.Bson.Serialization.Serializers.SealedClassSerializerBase`1.Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
+             at MongoDB.Bson.Serialization.Serializers.SerializerBase`1.MongoDB.Bson.Serialization.IBsonSerializer.Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
+             at MongoDB.Driver.Linq.Translators.ProjectedObjectDeserializer.ReadDocument(BsonDeserializationContext context, String currentKey, String scopeKey, ProjectedObject currentObject)
+             at MongoDB.Driver.Linq.Translators.ProjectedObjectDeserializer.Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
+             at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Deserialize[TValue](IBsonSerializer`1 serializer, BsonDeserializationContext context)\\n" +
+             at MongoDB.Bson.Serialization.Serializers.ProjectingDeserializer`2.Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)\\n" +
+             at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Deserialize[TValue](IBsonSerializer`1 serializer, BsonDeserializationContext context)\\n" +
+             at MongoDB.Driver.Core.Operations.CursorBatchDeserializationHelper.DeserializeBatch[TDocument](RawBsonArray batch, IBsonSerializer`1 documentSerializer, MessageEncoderSettings messageEncoderSettings)\\n" +
+             at MongoDB.Driver.Core.Operations.AsyncCursor`1.CreateCursorBatch(BsonDocument result)\\n" +
+             at MongoDB.Driver.Core.Operations.AsyncCursor`1.ExecuteGetMoreCommand(IChannelHandle channel, CancellationToken cancellationToken)\\n" +
+             at MongoDB.Driver.Core.Operations.AsyncCursor`1.GetNextBatch(CancellationToken cancellationToken)\\n" +
+             at MongoDB.Driver.Core.Operations.AsyncCursor`1.MoveNext(CancellationToken cancellationToken)\\n" +
+             at MongoDB.Driver.Core.Operations.AsyncCursorEnumerator`1.MoveNext()\\n" +
+             at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)\\n" +
+             at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)\\n" +
+             at BSoftSolutions.Implementations.MongoRepository.MovieList() in /Users/rebeccaannburton/Projects/BSoftSolution/BSoftSolutions/Implementations/MongoRepository.cs:line 102
+          */
+
         System.Diagnostics.Debug.WriteLine(e.ToString());
       }
 

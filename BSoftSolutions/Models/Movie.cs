@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace BSoftSolutions.Models
@@ -36,8 +34,6 @@ namespace BSoftSolutions.Models
   [BsonIgnoreExtraElements]
   public class Movie
   {
-      [BsonId]
-      public ObjectId _id;
       public string plot;
       public IEnumerable<string> genres;
       public int runtime;
