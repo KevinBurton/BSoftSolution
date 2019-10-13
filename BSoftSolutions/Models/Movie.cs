@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -7,9 +8,9 @@ namespace BSoftSolutions.Models
   [BsonIgnoreExtraElements]
   public class TomatoViewer
   {
-      public float rating { get; set; }
-      public int numReviews { get; set; }
-      public int meter { get; set; }
+      public float rating;
+      public int numReviews;
+      public int meter;
   }
   [BsonIgnoreExtraElements]
   public class Tomato
@@ -28,33 +29,30 @@ namespace BSoftSolutions.Models
   [BsonIgnoreExtraElements]
   public class Imdb
   {
-      public float rating { get; set; }
-      public int votes { get; set; }
-      public int id { get; set; }
+      public float rating;
+      public int votes;
+      public int id;
   }
   [BsonIgnoreExtraElements]
   public class Movie
   {
-    public Movie()
-    {
-    }
       [BsonId]
-      public ObjectId _id { get; set; }
-      public string plot { get; set; }
-      public string[] genres { get; set; }
-      public int runtime { get; set; }
-      public string[] cast { get; set; }
-      public string title { get; set; }
-      public string fullplot { get; set; }
-      public string[] languages { get; set; }
-      public long released { get; set; }
-      public string[] directors { get; set; }
-      public string[] writers { get; set; }
-      public Award awards { get; set; }
-      public string lastupdated { get; set; }
-      public int year { get; set; }
+      public ObjectId _id;
+      public string plot;
+      public IEnumerable<string> genres;
+      public int runtime;
+      public IEnumerable<string> cast;
+      public string title;
+      public string fullplot;
+      public IEnumerable<string> languages;
+      public long released;
+      public IEnumerable<string> directors;
+      public IEnumerable<string> writers;
+      public Award awards;
+      public string lastupdated;
+      public int year;
       public Imdb imdb;
-      public string[] countries { get; set; }
+      public IEnumerable<string> countries;
       public string type;
       public Tomato tomatoes;
   }
