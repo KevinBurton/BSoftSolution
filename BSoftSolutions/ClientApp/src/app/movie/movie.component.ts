@@ -11,11 +11,21 @@ export class MovieComponent {
     }
     errorMessage: string = '';
     geocodeInput: string = '';
-    getDBList(): void {
-        this.processor.DBList().
+    movieList: string[] = [];
+    getDbList(): void {
+        this.processor.DbList().
             subscribe({
                 next: loc => {
                     loc.forEach(l => console.log(`DB Name:${l}`));
+                },
+                error: err => this.errorMessage = err
+            });
+    }
+    getMovieList(): void {
+        this.processor.MovieList().
+            subscribe({
+                next: loc => {
+                    this.movieList = [...loc];
                 },
                 error: err => this.errorMessage = err
             });

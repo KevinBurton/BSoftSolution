@@ -1,4 +1,18 @@
 <h1>Movie</h1>
 <p>Sample Movie Code</p>
-<button id="movie-db-button" (click)="getDBList()">List DB</button>
+<button id="movie-db-button" (click)="getDbList()">Db List</button>
+<br/>
+<button id="movie-list-button" (click)="getMovieList()">Movie List</button>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="movieList && movieList.length > 0">
+  <thead>
+  <tr>
+    <th>Title</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let movie of movieList">
+    <td>{{ movie }}</td>
+  </tr>
+  </tbody>
+</table>
 

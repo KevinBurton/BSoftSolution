@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BSoftSolutions.Interfaces;
+using BSoftSolutions.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -9,12 +10,19 @@ namespace BSoftSolutions.Implementations
 {
   public class MongoRepository : IMongoRepository
   {
-    string ConnectionString { get;set; }
-    MongoClient MongoClient { get;set; }
+    string ConnectionString { get; set; }
 
-    public MongoRepository(string cs)
+    MongoClient MongoClient { get; set; }
+    string MongoDbName { get; set; }
+    string MongoCollectionName { get; set; }
+    IMongoDatabase MongoDatabase { get; set; }
+    IMongoCollection<BsonDocument> MongoCollection { get;set; }
+
+    public MongoRepository(string cs, string dbName, string collectionName)
     {
       ConnectionString = cs;
+      MongoDbName = dbName;
+      MongoCollectionName = collectionName;
     }
 
     public string Database
@@ -28,6 +36,8 @@ namespace BSoftSolutions.Implementations
       try
       {
         MongoClient = new MongoClient(ConnectionString);
+        MongoDatabase = MongoClient.GetDatabase(MongoDbName);
+        MongoCollection = MongoDatabase.GetCollection<BsonDocument>(MongoCollectionName);
       }
       catch (Exception)
       {
@@ -84,11 +94,19 @@ namespace BSoftSolutions.Implementations
     }
     public IEnumerable<string> MovieList()
     {
-      var moviesCollection = MongoClient.GetDatabase("sample_mflix").GetCollection<BsonDocument>("movies");
-      foreach(var movie in moviesCollection.Find(new BsonDocument()).ToList())
+
+      List<BsonValue> results = new List<BsonValue>();
+
+      try
       {
-        yield return movie["title"].ToString();
+        results = MongoCollection.AsQueryable<BsonDocument>().Select(x => x["title"]).ToList();
       }
+      catch(Exception e)
+      {
+        System.Diagnostics.Debug.WriteLine(e.ToString());
+      }
+
+      return results.OrderBy(x => x.ToString()).Select(x => x.ToString());
     }
   }
 }

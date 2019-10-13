@@ -22,13 +22,22 @@ namespace BSoftSolutions.Controllers
     }
     // GET: /DBList
     [HttpGet]
-    [Route("")]
     [Route("DBList")]
     public IEnumerable<string> DBList()
     {
-        var repository = new MongoRepository(ConnectionStrings.MongoDBConnectionString);
+        var repository = new MongoRepository(ConnectionStrings.MongoDbConnectionString,ConnectionStrings.MongoDbName, ConnectionStrings.MongoCollectionName);
         repository.Open();
-        return repository.MovieList();
+        return repository.DatabaseList();
+    }
+    // GET: /MovieList
+    [HttpGet]
+    [Route("")]
+    [Route("MovieList")]
+    public IEnumerable<string> MovieList()
+    {
+      var repository = new MongoRepository(ConnectionStrings.MongoDbConnectionString, ConnectionStrings.MongoDbName, ConnectionStrings.MongoCollectionName);
+      repository.Open();
+      return repository.MovieList();
     }
 
     // POST api/values
