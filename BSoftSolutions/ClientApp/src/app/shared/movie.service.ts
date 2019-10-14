@@ -24,6 +24,13 @@ export class MovieProcessor {
             catchError(this.handleError)
         );
     }
+    public MovieCastDictionary(): Observable<any> {
+        let url: string = '/Movie/MovieCastDictionary';
+        return this.http.get<any>(url).pipe(
+            tap((data) => console.log(`Movie Cast Dictionary: ${data.length}`)),
+            catchError(this.handleError)
+        );
+    }
     private handleError(err: HttpErrorResponse): ObservableInput<any> {
         let errorMessage: string = '';
         if (err.error instanceof ErrorEvent) {

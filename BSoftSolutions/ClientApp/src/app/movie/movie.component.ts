@@ -13,6 +13,7 @@ export class MovieComponent {
     geocodeInput: string = '';
     movieList: string[] = [];
     databaseList: string[] = [];
+    movieCastDictionary: any = {};
     getDatabaseList(): void {
         this.processor.DatabaseList().
             subscribe({
@@ -27,6 +28,15 @@ export class MovieComponent {
             subscribe({
                 next: loc => {
                     this.movieList = [...loc];
+                },
+                error: err => this.errorMessage = err
+            });
+    }
+    getMovieCastDictionary(): void {
+        this.processor.MovieCastDictionary().
+            subscribe({
+                next: loc => {
+                    this.movieCastDictionary = loc;
                 },
                 error: err => this.errorMessage = err
             });

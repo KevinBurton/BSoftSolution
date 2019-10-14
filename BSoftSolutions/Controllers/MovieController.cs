@@ -20,7 +20,7 @@ namespace BSoftSolutions.Controllers
     {
       ConnectionStrings = settings.Value;
     }
-    // GET: /DBList
+    // GET: /DatabaseList
     [HttpGet]
     [Route("DatabaseList")]
     public IEnumerable<string> DBList()
@@ -38,6 +38,15 @@ namespace BSoftSolutions.Controllers
       var repository = new MongoRepository(ConnectionStrings.MongoDbConnectionString, ConnectionStrings.MongoDbName, ConnectionStrings.MongoCollectionName);
       repository.Open();
       return repository.MovieList();
+    }
+    // GET: /MovieCastDictionary
+    [HttpGet]
+    [Route("MovieCastDictionary")]
+    public Dictionary<string, List<string>> MovieCastDictionary()
+    {
+      var repository = new MongoRepository(ConnectionStrings.MongoDbConnectionString, ConnectionStrings.MongoDbName, ConnectionStrings.MongoCollectionName);
+      repository.Open();
+      return repository.MovieCastDictionary();
     }
 
     // POST api/values

@@ -115,5 +115,28 @@ namespace BSoftSolutions.Implementations
 
       return results.OrderBy(x => x.ToString()).Select(x => x.ToString());
     }
+    public Dictionary<string, List<string>> MovieCastDictionary()
+    {
+      var query =
+        from d in MongoCollection.AsQueryable<BsonDocument>()
+        select d["cast"];
+
+      try
+      {
+
+        var results = query
+          .ToList()
+          .SelectMany(a => a.ToString().Split(',',StringSplitOptions.RemoveEmptyEntries))
+          .ToList();
+
+        System.Diagnostics.Debug.WriteLine(results.Count());
+        //return query.ToDictionary<string, List<string>>();
+      }
+      catch (Exception e)
+      {
+        System.Diagnostics.Debug.WriteLine(e.ToString());
+      }
+      throw new NotImplementedException();
+    }
   }
 }
