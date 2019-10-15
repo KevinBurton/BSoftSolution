@@ -25,12 +25,6 @@ namespace BSoftSolutions.Implementations
       MongoCollectionName = collectionName;
     }
 
-    public string Database
-    {
-      get => throw new NotImplementedException();
-      set => throw new NotImplementedException();
-    }
-
     public bool Open()
     {
       try
