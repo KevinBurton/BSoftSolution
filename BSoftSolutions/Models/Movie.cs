@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -15,7 +16,7 @@ namespace BSoftSolutions.Models
   {
       public TomatoViewer viewer;
       public string production;
-      public long lastUpdated;
+      public DateTime lastUpdated;
   }
   [BsonIgnoreExtraElements]
   public class Award
@@ -27,7 +28,7 @@ namespace BSoftSolutions.Models
   [BsonIgnoreExtraElements]
   public class Imdb
   {
-      public float rating;
+      public decimal rating;
       public int votes;
       public int id;
   }
@@ -38,10 +39,10 @@ namespace BSoftSolutions.Models
       public IEnumerable<string> genres;
       public int runtime;
       public IEnumerable<string> cast;
-      public string title;
+      public dynamic title;
       public string fullplot;
       public IEnumerable<string> languages;
-      public long released;
+      public DateTime released;
       public IEnumerable<string> directors;
       public IEnumerable<string> writers;
       public Award awards;
