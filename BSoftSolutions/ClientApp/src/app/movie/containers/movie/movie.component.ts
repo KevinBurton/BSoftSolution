@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieProcessor } from '../shared/movie.service';
+import { MovieProcessor } from '../../../shared/movie.service';
 
 @Component({
     selector: 'app-movie',

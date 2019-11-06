@@ -11,7 +11,7 @@ import { ResumeComponent } from './resume/resume.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { GeoProcessingComponent } from './geoprocessing/geoprocessing.component';
-import { MovieComponent } from './movie/movie.component';
+import { MovieModule } from './movie/movie.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,6 @@ import { MovieComponent } from './movie/movie.component';
     CounterComponent,
     FetchDataComponent,
     GeoProcessingComponent,
-    MovieComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,11 +30,11 @@ import { MovieComponent } from './movie/movie.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'geo', component: GeoProcessingComponent },
-      { path: 'movie', component: MovieComponent },
       { path: 'resume', component: ResumeComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    ]),
+    MovieModule
   ],
   providers: [],
   bootstrap: [AppComponent]
