@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let node of graph | async | keyvalue ">
+    {{node.key}}
+    <ul>
+      <li *ngFor="let actor of node.value">{{actor}}</li>
+    </ul>
+  </li>
+</ul>
+

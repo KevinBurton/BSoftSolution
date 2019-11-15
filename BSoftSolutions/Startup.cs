@@ -1,3 +1,5 @@
+using BSoftSolutions.Implementations;
+using BSoftSolutions.Interfaces;
 using BSoftSolutions.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +24,7 @@ namespace BSoftSolutions
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
+            services.AddSingleton<INeo4jDriver, Neo4jDriver>();
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
