@@ -29,13 +29,17 @@
     <None Remove="ClientApp\src\app\shared\tamuoutputgeocode.ts" />
     <None Remove="ClientApp\src\app\shared\movie.service.ts" />
     <None Remove="ClientApp\src\app\movie\movie-list\movie-list.component.spec.ts" />
+    <None Remove="ClientApp\src\app\models\tamuaddress.ts" />
+    <None Remove="ClientApp\src\app\models\tamugeocode.ts" />
+    <None Remove="ClientApp\src\app\models\tamuoutputgeocode.ts" />
+    <None Remove="ClientApp\src\app\services\movie.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\shared\tamugeocode.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\tamuaddress.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\tamuoutputgeocode.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\movie.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\tamuaddress.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\tamugeocode.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\tamuoutputgeocode.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\movie.service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClientApp\src\app\movie\" />
@@ -44,10 +48,12 @@
     <Folder Include="Implementations\" />
     <Folder Include="ClientApp\src\app\movie\containers\" />
     <Folder Include="ClientApp\src\app\movie\components\" />
-    <Folder Include="ClientApp\src\app\shared\models\" />
     <Folder Include="ClientApp\src\app\graph\" />
     <Folder Include="ClientApp\src\app\graph\components\" />
     <Folder Include="ClientApp\src\app\graph\containers\" />
+    <Folder Include="ClientApp\src\app\models\" />
+    <Folder Include="ClientApp\src\app\services\" />
+    <Folder Include="ClientApp\src\app\shared\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

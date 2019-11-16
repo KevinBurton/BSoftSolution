@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GraphService } from '../../../shared/graph.service';
+import { GraphService } from '../../../services/graph.service';
 import { Observable } from 'rxjs';
 
 @Component({

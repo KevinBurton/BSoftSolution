@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { ICoordinate } from "./coordinate";
+import { ICoordinate } from "../models/coordinate";
 import { Observable, ObservableInput, throwError } from "rxjs";
 import { filter, map, tap, catchError } from "rxjs/operators";
 
-import { tamugeocode } from "./tamugeocode";
+import { tamugeocode } from "../models/tamugeocode";
 
 @Injectable({
     providedIn: 'root'

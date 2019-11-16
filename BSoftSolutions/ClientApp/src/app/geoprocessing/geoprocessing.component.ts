@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { GeoProcessor } from '../shared/geoprocessor.service';
-import { ICoordinate } from '../shared/coordinate';
+import { GeoProcessor } from '../services/geoprocessor.service';
+import { ICoordinate } from '../models/coordinate';
 
 @Component({
     selector: 'app-geoprocessing',

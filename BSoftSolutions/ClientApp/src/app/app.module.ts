@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
+import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AppRouteModule } from './app-route.module';
@@ -17,10 +21,24 @@ import { GraphModule } from './graph/graph.module';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
+    StoreModule.forRoot({}, {
+        runtimeChecks: {
+            strictStateImmutability: true,
+            strictActionImmutability: true,
+            strictStateSerializability: true,
+            strictActionSerializability: true,
+        }
+    }),
+    StoreDevtoolsModule.instrument({
+        name: 'BSoft',
+        maxAge: 25,
+        logOnly: environment.production
+    }),
+    EffectsModule.forRoot([]),
     MovieModule,
     GraphModule,
     AppRouteModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
