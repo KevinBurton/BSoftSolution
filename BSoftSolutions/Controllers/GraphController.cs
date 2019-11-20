@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BSoftSolutions.Interfaces;
@@ -20,24 +21,29 @@ namespace BSoftSolutions.Controllers
     [HttpGet("{limit:int?}")]
     public Dictionary<string, List<string>> Index(int limit = 100)
     {
-      var statementText = "MATCH (a:Person)-[:ACTED_IN]->(m:Movie) RETURN m.title as movie, collect(a.name) as cast LIMIT {limit}";
-      var statementParameters = new Dictionary<string, object> { { "limit", limit } };
-      var retVal = new Dictionary<string, List<string>>();
-      using (var session = graph.Driver.Session())
-      {
-        var result = session.Run(statementText, statementParameters);
-        foreach (var record in result)
-        {
-          retVal[record["movie"].As<string>()] = record["cast"].As<List<string>>();
+            var statementText = "MATCH (a:Person)-[:ACTED_IN]->(m:Movie) RETURN m.title as movie, collect(a.name) as cast LIMIT {limit}";
+            var statementParameters = new Dictionary<string, object> { { "limit", limit } };
+            var retVal = new Dictionary<string, List<string>>();
+            try
+            {
+                using (var session = graph.Driver.Session())
+                {
+                    var result = session.Run(statementText, statementParameters);
+                    foreach (var record in result)
+                    {
+                        retVal[record["movie"].As<string>()] = record["cast"].As<List<string>>();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return retVal;
         }
-      }
 
-      return retVal;
-
-    }
-
-    // POST api/values
-    [HttpPost]
+        // POST api/values
+        [HttpPost]
     public void Post([FromBody]string value)
     {
     }
