@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
-import { MovieProcessor } from '../../../services/movie.service';
+import { MovieService } from '../../../services/movie.service';
+import { Movie } from "../../../models/movie";
 
 @Component({
     selector: 'app-movie',
     templateUrl: './movie.component.html'
 })
 export class MovieComponent {
-    constructor(private processor: MovieProcessor) {
+    constructor(private processor: MovieService) {
 
     }
     errorMessage: string = '';
     geocodeInput: string = '';
-    movieList: string[] = [];
+    movieList: Movie[] = [];
     databaseList: string[] = [];
     movieCastDictionary: any = {};
     getDatabaseList(): void {
@@ -24,7 +25,7 @@ export class MovieComponent {
             });
     }
     getMovieList(): void {
-        this.processor.MovieList().
+        this.processor.getMovies().
             subscribe({
                 next: loc => {
                     this.movieList = [...loc];

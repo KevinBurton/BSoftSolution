@@ -5,18 +5,30 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace BSoftSolutions.Models
 {
   [BsonIgnoreExtraElements]
+  public class TomatoCritic
+  {
+    public double? rating;
+    public int? numReviews;
+    public int? meter;
+  }
+  [BsonIgnoreExtraElements]
   public class TomatoViewer
   {
-      public float rating;
-      public int numReviews;
-      public int meter;
+      public double? rating;
+      public int? numReviews;
+      public int? meter;
   }
   [BsonIgnoreExtraElements]
   public class Tomato
   {
       public TomatoViewer viewer;
+      public DateTime? dvd;
+      public TomatoCritic critic;
       public string production;
-      public DateTime lastUpdated;
+      public string concensus;
+      public DateTime? lastUpdated;
+      public int? rotten;
+      public int? fresh;
   }
   [BsonIgnoreExtraElements]
   public class Award
@@ -28,7 +40,7 @@ namespace BSoftSolutions.Models
   [BsonIgnoreExtraElements]
   public class Imdb
   {
-      public decimal rating;
+      public double rating;
       public int votes;
       public int id;
   }
@@ -36,20 +48,22 @@ namespace BSoftSolutions.Models
   public class Movie
   {
       public string plot;
-      public IEnumerable<string> genres;
+      public IList<string> genres;
       public int runtime;
-      public IEnumerable<string> cast;
-      public dynamic title;
+      public string rated;
+      public IList<string> cast;
+      public string poster;
+      public string title;
       public string fullplot;
-      public IEnumerable<string> languages;
+      public IList<string> languages;
       public DateTime released;
-      public IEnumerable<string> directors;
-      public IEnumerable<string> writers;
+      public IList<string> directors;
+      public IList<string> writers;
       public Award awards;
       public string lastupdated;
       public int year;
       public Imdb imdb;
-      public IEnumerable<string> countries;
+      public IList<string> countries;
       public string type;
       public Tomato tomatoes;
   }

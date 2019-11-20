@@ -42,7 +42,9 @@ namespace BSoftSolutions.Implementations
 
     public void Close()
     {
-      throw new NotImplementedException();
+      MongoClient = null;
+      MongoDatabase = null;
+      MongoCollection = null;
     }
 
     public IEnumerable<string> DatabaseList()
@@ -73,13 +75,12 @@ namespace BSoftSolutions.Implementations
         }
       }
     }
-    public IEnumerable<string> MovieList()
+    public List<Movie> MovieList()
     {
 
       try
       {
-        var r = MongoCollection.AsQueryable().Select(x => x.title).ToList().Select(x => Convert.ToString(x)).Cast<string>().OrderBy(x => x).ToList();
-        return r;
+        return MongoCollection.AsQueryable().ToList();
       }
       catch (Exception e)
       {

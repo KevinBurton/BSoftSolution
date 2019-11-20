@@ -1,38 +1,44 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Observable, ObservableInput, throwError } from "rxjs";
-import { tap, catchError } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, ObservableInput, throwError } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
+
+import { Movie } from '../models/movie';
 
 @Injectable({
     providedIn: 'root'
 })
-export class MovieProcessor {
+export class MovieService {
     constructor(private http: HttpClient) {
 
     }
     public DatabaseList(): Observable<string[]> {
-        let url: string = '/Movie/DatabaseList';
+        const url = '/Movie/DatabaseList';
         return this.http.get<any>(url).pipe(
             tap((data) => console.log(`Database List: ${data.length}`)),
             catchError(this.handleError)
         );
     }
-    public MovieList(): Observable<string[]> {
-        let url: string = '/Movie/MovieList';
-        return this.http.get<string[]>(url).pipe(
-            tap((data) => console.log(`Movie List: ${data.length}`)),
+    public getMovies(): Observable<Movie[]> {
+        const url = '/Movie/MovieList';
+        return this.http.get<Movie[]>(url).pipe(
+            tap((data) => {
+                console.log(`Movie List: ${data.length}`);
+            }),
             catchError(this.handleError)
         );
     }
     public MovieCastDictionary(): Observable<any> {
-        let url: string = '/Movie/MovieCastDictionary';
+        const url = '/Movie/MovieCastDictionary';
         return this.http.get<any>(url).pipe(
-            tap((data) => console.log(`Movie Cast Dictionary: ${data.length}`)),
+            tap((data) => {
+                console.log(`Movie Cast Dictionary: ${data.length}`);
+            }),
             catchError(this.handleError)
         );
     }
     private handleError(err: HttpErrorResponse): ObservableInput<any> {
-        let errorMessage: string = '';
+        let errorMessage = '';
         if (err.error instanceof ErrorEvent) {
             errorMessage = `An error occurred: ${err.error.message}`;
         } else {
