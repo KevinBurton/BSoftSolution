@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
-    <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.9.3" />
     <PackageReference Include="Neo4j.Driver" Version="1.7.2" />
   </ItemGroup>
 
@@ -77,6 +77,9 @@
     <None Remove="ClientApp\src\app\counter\counter.component.html" />
     <None Remove="ClientApp\src\app\counter\counter.component.ts" />
     <None Remove="ClientApp\src\app\movie\containers\movie\movie.component.ts" />
+    <None Include="**/*" />
+    <None Remove="obj\Debug\netcoreapp3.0\Razor\Pages\_ViewImports.cshtml.g.cs" />
+    <None Remove="obj\Debug\netcoreapp3.0\Razor\Pages\Error.cshtml.g.cs" />
   </ItemGroup>
 
   <ItemGroup>
