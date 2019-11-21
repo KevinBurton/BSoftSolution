@@ -65,8 +65,6 @@
     <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.html" />
     <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.ts" />
     <None Remove="ClientApp\src\app\movie\containers\movie\movie.component.ts" />
-    <None Remove="ClientApp\src\app\movie\components\movie-list\movie-list.component.css" />
-    <None Remove="ClientApp\src\app\movie\components\movie-list\movie-list.component.html" />
     <None Remove="ClientApp\src\app\movie\components\movie-list\movie-list.component.ts" />
     <None Remove="ClientApp\src\app\.gitignore" />
     <None Remove="ClientApp\src\app\home\home.component.html" />
@@ -88,6 +86,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\services\movie.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\movie\containers\movie\movie.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\movie\movie.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\movie\components\movie-list\movie-list.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClientApp\src\app\graph\components\graph-list\" />
@@ -122,7 +121,7 @@
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
       <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
-      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
