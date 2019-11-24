@@ -80,7 +80,64 @@ namespace BSoftSolutions.Implementations
 
       try
       {
-        return MongoCollection.AsQueryable().ToList();
+        return MongoCollection.AsQueryable().Select(x => x == null ? new Movie() :
+        new Movie()
+        {
+          plot = x.plot,
+          genres = x.genres.ToList(),
+          runtime = x.runtime,
+          rated = x.rated,
+          cast = x.cast.ToList(),
+          poster = x.poster,
+          title = Convert.ToString(x.title),
+          fullplot = x.fullplot,
+          languages = x.languages.ToList(),
+          released = x.released,
+          directors = x.directors.ToList(),
+          writers = x.writers.ToList(),
+          awards = x.awards == null ? new Award() :
+          new Award()
+          {
+            wins = x.awards.wins,
+            nominations = x.awards.nominations,
+            text = x.awards.text
+          },
+          lastupdated = x.lastupdated,
+          year = x.year,
+          imdb = x.imdb == null ? new Imdb() :
+          new Imdb()
+          {
+            rating = x.imdb.rating,
+            votes = x.imdb.votes,
+            id = x.imdb.id
+          },
+          countries = x.countries.ToList(),
+          type = x.type,
+          tomatoes = x.tomatoes == null ? new Tomato() :
+          new Tomato()
+          {
+            viewer = x.tomatoes.viewer == null ? new TomatoViewer() :
+            new TomatoViewer()
+            {
+              rating = x.tomatoes.viewer.rating,
+              numReviews = x.tomatoes.viewer.numReviews,
+              meter = x.tomatoes.viewer.meter
+            },
+            dvd = x.tomatoes.dvd,
+            critic = x.tomatoes.critic == null ? new TomatoCritic() :
+            new TomatoCritic()
+            {
+              rating = x.tomatoes.critic.rating,
+              numReviews = x.tomatoes.critic.numReviews,
+              meter = x.tomatoes.critic.meter
+            },
+            production = x.tomatoes.production,
+            concensus = x.tomatoes.concensus,
+            lastUpdated = x.tomatoes.lastUpdated,
+            rotten = x.tomatoes.rotten,
+            fresh = x.tomatoes.fresh
+          }
+        }).ToList();
       }
       catch (Exception e)
       {
