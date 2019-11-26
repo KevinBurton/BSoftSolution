@@ -4,67 +4,133 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace BSoftSolutions.Models
 {
-  [BsonIgnoreExtraElements]
+  [Serializable]
   public class TomatoCritic
   {
-    public double? rating;
-    public int? numReviews;
-    public int? meter;
+    [BsonElement]
+    [BsonRepresentation(MongoDB.Bson.BsonType.Double)]
+    public double rating;
+    [BsonElement]
+    [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+    public int numReviews;
+    [BsonElement]
+    [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+    public int meter;
   }
-  [BsonIgnoreExtraElements]
+  [Serializable]
   public class TomatoViewer
   {
-      public double? rating;
-      public int? numReviews;
-      public int? meter;
+    [BsonElement]
+    [BsonRepresentation(MongoDB.Bson.BsonType.Double)]
+    public double rating;
+    [BsonElement]
+    [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+    public int numReviews;
+    [BsonElement]
+    [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+    public int meter;
   }
-  [BsonIgnoreExtraElements]
+  [Serializable]
   public class Tomato
   {
+      [BsonElement]
       public TomatoViewer viewer;
-      public DateTime? dvd;
+      [BsonElement]
+      public string dvd;
+      [BsonElement]
       public TomatoCritic critic;
+      [BsonElement]
       public string production;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
       public string concensus;
-      public DateTime? lastUpdated;
-      public int? rotten;
-      public int? fresh;
+      [BsonElement]
+      public DateTime lastUpdated;
+      [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+      public int rotten;
+      [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+      public int fresh;
   }
-  [BsonIgnoreExtraElements]
+  [Serializable]
   public class Award
   {
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
       public int wins;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
       public int nominations;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
       public string text;
   }
-  [BsonIgnoreExtraElements]
+  [Serializable]
   public class Imdb
   {
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Double)]
       public double rating;
+      [BsonElement]
       public int votes;
+      [BsonElement]
       public int id;
   }
-  [BsonIgnoreExtraElements]
+  [Serializable]
   public class Movie
   {
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
       public string plot;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
       public IList<string> genres;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
       public int runtime;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
       public string rated;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
       public IList<string> cast;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
       public string poster;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
       public string title;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
       public string fullplot;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
       public IList<string> languages;
-      public DateTime released;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
+      public string released;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
       public IList<string> directors;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
       public IList<string> writers;
+      [BsonElement]
       public Award awards;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
       public string lastupdated;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
       public int year;
+      [BsonElement]
       public Imdb imdb;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
       public IList<string> countries;
+      [BsonElement]
+      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
       public string type;
+      [BsonElement]
       public Tomato tomatoes;
-  }
+    }
 }

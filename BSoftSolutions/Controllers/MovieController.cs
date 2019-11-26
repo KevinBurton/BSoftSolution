@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 namespace BSoftSolutions.Controllers
 {
   [Route("Movie")]
-  public class MovieController : Controller
+  public class MovieController : ControllerBase
   {
     private ConnectionStrings ConnectionStrings { get; set; }
     public MovieController(IOptions<ConnectionStrings> settings)
@@ -30,7 +30,6 @@ namespace BSoftSolutions.Controllers
     }
     // GET: /MovieList
     [HttpGet]
-    [Route("")]
     [Route("MovieList")]
     public List<Movie> MovieList()
     {

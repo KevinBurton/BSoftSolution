@@ -4,6 +4,7 @@ using System.Linq;
 using BSoftSolutions.Interfaces;
 using BSoftSolutions.Models;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
 namespace BSoftSolutions.Implementations
@@ -16,10 +17,11 @@ namespace BSoftSolutions.Implementations
     string MongoDbName { get; set; }
     string MongoCollectionName { get; set; }
     IMongoDatabase MongoDatabase { get; set; }
-    IMongoCollection<Movie> MongoCollection { get;set; }
+    IMongoCollection<BsonDocument> MongoCollection { get;set; }
 
     public MongoRepository(string cs, string dbName, string collectionName)
     {
+      BsonClassMap.RegisterClassMap<Movie>();
       ConnectionString = cs;
       MongoDbName = dbName;
       MongoCollectionName = collectionName;
@@ -31,7 +33,7 @@ namespace BSoftSolutions.Implementations
       {
         MongoClient = new MongoClient(ConnectionString);
         MongoDatabase = MongoClient.GetDatabase(MongoDbName);
-        MongoCollection = MongoDatabase.GetCollection<Movie>(MongoCollectionName);
+        MongoCollection = MongoDatabase.GetCollection<BsonDocument>(MongoCollectionName);
       }
       catch (Exception)
       {
@@ -80,92 +82,133 @@ namespace BSoftSolutions.Implementations
 
       try
       {
-        return MongoCollection.AsQueryable().Select(x => x == null ? new Movie() :
-        new Movie()
+        var cursor = MongoCollection.Find(new BsonDocument()).ToCursor();
+        var movieList = new List<Movie>();
+        foreach (var document in cursor.ToEnumerable())
         {
-          plot = x.plot,
-          genres = x.genres.ToList(),
-          runtime = x.runtime,
-          rated = x.rated,
-          cast = x.cast.ToList(),
-          poster = x.poster,
-          title = Convert.ToString(x.title),
-          fullplot = x.fullplot,
-          languages = x.languages.ToList(),
-          released = x.released,
-          directors = x.directors.ToList(),
-          writers = x.writers.ToList(),
-          awards = x.awards == null ? new Award() :
-          new Award()
+          var movie = new Movie()
           {
-            wins = x.awards.wins,
-            nominations = x.awards.nominations,
-            text = x.awards.text
-          },
-          lastupdated = x.lastupdated,
-          year = x.year,
-          imdb = x.imdb == null ? new Imdb() :
-          new Imdb()
+            plot = document.Contains("plot") ? document["plot"].AsString : string.Empty,
+            runtime = document.Contains("runtime") ? document["runtime"].ToInt32() : 0,
+            rated = document.Contains("rated") ? document["rated"].AsString : string.Empty,
+            poster = document.Contains("posted") ? document["posted"].AsString : string.Empty,
+            title = document.Contains("fullplot") ? document["fullplot"].AsString : string.Empty,
+            released = document.Contains("released") ? document["released"].AsString : string.Empty,
+            lastupdated = document.Contains("lastupdated") ? document["lastupdated"].AsString : string.Empty,
+            year = document.Contains("year") ? document["year"].ToInt32() : 0,
+            type = document.Contains("type") ? document["type"].AsString : string.Empty,
+          };
+          movie.genres = new List<string>();
+          if(document.Contains("genres"))
           {
-            rating = x.imdb.rating,
-            votes = x.imdb.votes,
-            id = x.imdb.id
-          },
-          countries = x.countries.ToList(),
-          type = x.type,
-          tomatoes = x.tomatoes == null ? new Tomato() :
-          new Tomato()
-          {
-            viewer = x.tomatoes.viewer == null ? new TomatoViewer() :
-            new TomatoViewer()
+            var fields = document["genres"].AsBsonArray;
+            foreach (var field in fields)
             {
-              rating = x.tomatoes.viewer.rating,
-              numReviews = x.tomatoes.viewer.numReviews,
-              meter = x.tomatoes.viewer.meter
-            },
-            dvd = x.tomatoes.dvd,
-            critic = x.tomatoes.critic == null ? new TomatoCritic() :
-            new TomatoCritic()
-            {
-              rating = x.tomatoes.critic.rating,
-              numReviews = x.tomatoes.critic.numReviews,
-              meter = x.tomatoes.critic.meter
-            },
-            production = x.tomatoes.production,
-            concensus = x.tomatoes.concensus,
-            lastUpdated = x.tomatoes.lastUpdated,
-            rotten = x.tomatoes.rotten,
-            fresh = x.tomatoes.fresh
+              movie.genres.Add(field.AsString);
+            }
           }
-        }).ToList();
+          movie.cast = new List<string>();
+          if (document.Contains("cast"))
+          {
+            var fields = document["cast"].AsBsonArray;
+            foreach (var field in fields)
+            {
+              movie.cast.Add(field.AsString);
+            }
+          }
+          movie.languages = new List<string>();
+          if (document.Contains("languages"))
+          {
+            var fields = document["languages"].AsBsonArray;
+            foreach (var field in fields)
+            {
+              movie.languages.Add(field.AsString);
+            }
+          }
+          movie.directors = new List<string>();
+          if(document.Contains("directors"))
+          {
+            var fields = document["directors"].AsBsonArray;
+            foreach (var field in fields)
+            {
+              movie.directors.Add(field.AsString);
+            }
+          }
+          movie.writers = new List<string>();
+          if(document.Contains("writers"))
+          {
+            var fields = document["writers"].AsBsonArray;
+            foreach (var field in fields)
+            {
+              movie.writers.Add(field.AsString);
+            }
+          }
+          movie.countries = new List<string>();
+          if(document.Contains("countries"))
+          {
+            var fields = document["countries"].AsBsonArray;
+            foreach (var field in fields)
+            {
+              movie.countries.Add(field.AsString);
+            }
+          }
+
+          movie.awards = new Award();
+          if(document.Contains("awards"))
+          {
+            var subDocument = document["awards"].AsBsonDocument;
+            //movie.awards.wins = subDocument.Contains("wins") ? (int)subDocument["wins"] : 0;
+            //movie.awards.nominations = subDocument.Contains("nominations") ? (int)(subDocument["nominations"].AsDouble) : 0;
+            //movie.awards.text = subDocument.Contains("text") ? subDocument["text"].AsString : string.Empty;
+          }
+          movie.imdb = new Imdb();
+          if(document.Contains("imdb"))
+          {
+            var subDocument = document["imdb"].AsBsonDocument;
+            //movie.imdb.rating = subDocument.Contains("rating") ? subDocument["rating"].AsDouble : 0.0;
+            //movie.imdb.votes = subDocument.Contains("votes") ? (int)(subDocument["votes"].AsDouble) : 0;
+            //movie.imdb.id = subDocument.Contains("id") ? subDocument["id"].AsInt32 : 0;
+          }
+          movie.tomatoes = new Tomato();
+          //if (document.Contains("tomatoes"))
+          //{
+          //  var subDocument = document["tomatoes"].AsBsonDocument;
+          //  if (subDocument.Contains("viewer"))
+          //  {
+          //    var viewerDocument = subDocument["viewer"].AsBsonDocument;
+          //    movie.tomatoes.viewer = new TomatoViewer();
+          //    movie.tomatoes.viewer.rating = viewerDocument.Contains("rating") ? viewerDocument["rating"].AsDouble : 0.0;
+          //    movie.tomatoes.viewer.numReviews = viewerDocument.Contains("numReviews") ? (int)(viewerDocument["numReviews"].AsDouble) : 0;
+          //    movie.tomatoes.viewer.meter = viewerDocument.Contains("meter") ? (int)(viewerDocument["meter"].AsDouble) : 0;
+          //  }
+          //  movie.tomatoes.dvd = subDocument.Contains("dvd") ? subDocument["dvd"].AsString : string.Empty;
+          //  if (subDocument.Contains("critic"))
+          //  {
+          //    movie.tomatoes.critic = new TomatoCritic();
+          //    var criticDocument = subDocument["critic"].AsBsonDocument;
+          //    movie.tomatoes.critic.rating = criticDocument.Contains("rating") ? criticDocument["rating"].AsDouble : 0.0;
+          //    movie.tomatoes.critic.numReviews = criticDocument.Contains("numReviews") ? criticDocument["numReviews"].AsInt32 : 0;
+          //    movie.tomatoes.critic.meter = criticDocument.Contains("meter") ? criticDocument["meter"].AsInt32 : 0;
+          //  }
+          //  movie.tomatoes.production = subDocument.Contains("production") ? subDocument["production"].AsString : string.Empty;
+          //  movie.tomatoes.concensus = subDocument.Contains("consensus") ? subDocument["consensus"].AsString : string.Empty;
+          //  movie.tomatoes.lastUpdated = subDocument.Contains("lastUpdated") ? subDocument["lastUpdated"].ToUniversalTime() : DateTime.MinValue;
+          //  movie.tomatoes.rotten = subDocument.Contains("rotten") ? subDocument["rotten"].AsInt32 : 0;
+          //  movie.tomatoes.fresh = subDocument.Contains("fresh") ? subDocument["fresh"].AsInt32 : 0;
+          //}
+
+          movieList.Add(movie);
+        }
+        return movieList;
       }
       catch (Exception e)
       {
         System.Diagnostics.Debug.WriteLine(e.ToString());
-        throw;
+        throw;  
       }
     }
     public Dictionary<string, List<string>> MovieCastDictionary()
     {
-      var query =
-        from d in MongoCollection.AsQueryable()
-        select d.cast;
-
-      try
-      {
-
-        var results = query
-          .ToList()
-          .SelectMany(a => a.ToString().Split(',',StringSplitOptions.RemoveEmptyEntries))
-          .ToList();
-
-        System.Diagnostics.Debug.WriteLine(results.Count());
-        //return query.ToDictionary<string, List<string>>();
-      }
-      catch (Exception e)
-      {
-        System.Diagnostics.Debug.WriteLine(e.ToString());
-      }
       throw new NotImplementedException();
     }
   }
