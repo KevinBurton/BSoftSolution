@@ -25,6 +25,7 @@ namespace BSoftSolutions
         {
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
             services.AddSingleton<INeo4jDriver, Neo4jDriver>();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

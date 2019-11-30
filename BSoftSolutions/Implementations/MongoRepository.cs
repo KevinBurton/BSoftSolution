@@ -21,12 +21,12 @@ namespace BSoftSolutions.Implementations
 
     public MongoRepository(string cs, string dbName, string collectionName)
     {
-      BsonClassMap.RegisterClassMap<Movie>();
-      BsonClassMap.RegisterClassMap<Tomato>();
-      BsonClassMap.RegisterClassMap<TomatoCritic>();
-      BsonClassMap.RegisterClassMap<TomatoViewer>();
-      BsonClassMap.RegisterClassMap<Award>();
-      BsonClassMap.RegisterClassMap<Imdb>();
+      //BsonClassMap.RegisterClassMap<Movie>();
+      //BsonClassMap.RegisterClassMap<Tomato>();
+      //BsonClassMap.RegisterClassMap<TomatoCritic>();
+      //BsonClassMap.RegisterClassMap<TomatoViewer>();
+      //BsonClassMap.RegisterClassMap<Award>();
+      //BsonClassMap.RegisterClassMap<Imdb>();
       ConnectionString = cs;
       MongoDbName = dbName;
       MongoCollectionName = collectionName;
@@ -42,7 +42,7 @@ namespace BSoftSolutions.Implementations
       }
       catch (Exception)
       {
-        return false;
+        throw;
       }
       return true;
     }

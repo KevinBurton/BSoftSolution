@@ -17,8 +17,11 @@ namespace BSoftSolutions.Controllers
     private ConnectionStrings ConnectionStrings { get; set; }
     public MovieController(IOptions<ConnectionStrings> settings)
     {
-      ConnectionStrings = settings.Value;
-    }
+            if(settings != null)
+            {
+                ConnectionStrings = settings.Value;
+            }
+        }
     // GET: /DatabaseList
     [HttpGet]
     [Route("DatabaseList")]
@@ -64,21 +67,21 @@ namespace BSoftSolutions.Controllers
     }
 
     // POST api/values
-    [HttpPost]
-    public void Post([FromBody]string value)
-    {
-    }
+    //[HttpPost]
+    //public void Post([FromBody]string value)
+    //{
+    //}
 
     // PUT api/values/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody]string value)
-    {
-    }
+    //[HttpPut("{id}")]
+    //public void Put(int id, [FromBody]string value)
+    //{
+    //}
 
     // DELETE api/values/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
-    }
+    //[HttpDelete("{id}")]
+    //public void Delete(int id)
+    //{
+    //}
   }
 }
