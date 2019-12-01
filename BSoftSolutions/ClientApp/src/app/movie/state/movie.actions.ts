@@ -4,7 +4,7 @@ import { Movie } from '../../models/movie';
 export enum MovieActionTypes {
     LoadMovies = '[Movie] Initiate load of movies from DB',
     LoadMoviesSuccess = '[Movie] Successfull load of movies',
-    LoadMoviesFail = '[Movie] Load movies feiled'
+    LoadMoviesFail = '[Movie] Load movies failed'
 }
 
 export class LoadMovies implements Action {

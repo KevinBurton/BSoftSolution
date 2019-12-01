@@ -24,7 +24,7 @@ export const getError = createSelector(
   state => state.error
 );
 
-export function productReducer(state = initialState, action: MovieActions): MovieState {
+export function movieReducer(state = initialState, action: MovieActions): MovieState {
     switch (action.type) {
       case MovieActionTypes.LoadMoviesSuccess:
         return {

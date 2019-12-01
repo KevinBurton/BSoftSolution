@@ -11,7 +11,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as movieActions from './movie.actions';
 
 @Injectable()
-export class ProductEffects {
+export class MovieEffects {
 
   constructor(private movieService: MovieService,
               private actions$: Actions) { }
