@@ -21,10 +21,10 @@ namespace BSoftSolutions.Models
         [BsonElement]
         [BsonRepresentation(MongoDB.Bson.BsonType.Double)]
         public double rating { get; set; }
-    [BsonElement]
+        [BsonElement]
         [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
         public int numReviews { get; set; }
-    [BsonElement]
+        [BsonElement]
         [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
         public int meter { get; set; }
   }
@@ -32,37 +32,37 @@ namespace BSoftSolutions.Models
     {
         [BsonElement]
         public TomatoViewer viewer { get; set; }
-      [BsonElement]
+        [BsonElement]
         [BsonRepresentation(MongoDB.Bson.BsonType.String)]
         public string dvd { get; set; }
-      [BsonElement]
+        [BsonElement]
         public TomatoCritic critic { get; set; }
-      [BsonElement]
+        [BsonElement]
         [BsonRepresentation(MongoDB.Bson.BsonType.String)]
         public string production { get; set; }
-      [BsonElement]
+        [BsonElement]
         [BsonRepresentation(MongoDB.Bson.BsonType.String)]
         public string concensus { get; set; }
-      [BsonElement]
+        [BsonElement]
         public DateTime lastUpdated { get; set; }
-      [BsonElement]
+        [BsonElement]
         [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
         public int rotten { get; set; }
-      [BsonElement]
+        [BsonElement]
         [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
         public int fresh { get; set; }
   }
   public class Award
   {
-      [BsonElement]
-      [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-      public int wins { get; set; }
         [BsonElement]
-      [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-      public int nominations { get; set; }
+        [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+        public int wins { get; set; }
         [BsonElement]
-      [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-      public string text { get; set; }
+        [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+        public int nominations { get; set; }
+        [BsonElement]
+        [BsonRepresentation(MongoDB.Bson.BsonType.String)]
+        public string text { get; set; }
     }
   [Serializable]
   public class Imdb

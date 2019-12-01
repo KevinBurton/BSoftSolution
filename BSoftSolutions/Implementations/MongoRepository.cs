@@ -21,7 +21,7 @@ namespace BSoftSolutions.Implementations
 
     public MongoRepository(string cs, string dbName, string collectionName)
     {
-      //BsonClassMap.RegisterClassMap<Movie>();
+      BsonClassMap.RegisterClassMap<Movie>();
       //BsonClassMap.RegisterClassMap<Tomato>();
       //BsonClassMap.RegisterClassMap<TomatoCritic>();
       //BsonClassMap.RegisterClassMap<TomatoViewer>();
@@ -162,45 +162,45 @@ namespace BSoftSolutions.Implementations
           if(document.Contains("awards"))
           {
             var subDocument = document["awards"].AsBsonDocument;
-            //movie.awards.wins = subDocument.Contains("wins") ? (int)subDocument["wins"] : 0;
-            //movie.awards.nominations = subDocument.Contains("nominations") ? (int)(subDocument["nominations"].AsDouble) : 0;
-            //movie.awards.text = subDocument.Contains("text") ? subDocument["text"].AsString : string.Empty;
+            movie.awards.wins = subDocument.Contains("wins") ? subDocument["wins"].ToInt32() : 0;
+            movie.awards.nominations = subDocument.Contains("nominations") ? subDocument["nominations"].ToInt32() : 0;
+            movie.awards.text = subDocument.Contains("text") ? subDocument["text"].AsString : string.Empty;
           }
           movie.imdb = new Imdb();
           if(document.Contains("imdb"))
           {
             var subDocument = document["imdb"].AsBsonDocument;
-            //movie.imdb.rating = subDocument.Contains("rating") ? subDocument["rating"].AsDouble : 0.0;
-            //movie.imdb.votes = subDocument.Contains("votes") ? (int)(subDocument["votes"].AsDouble) : 0;
-            //movie.imdb.id = subDocument.Contains("id") ? subDocument["id"].AsInt32 : 0;
+            movie.imdb.rating = subDocument.Contains("rating") ? subDocument["rating"].ToDouble() : 0.0;
+            movie.imdb.votes = subDocument.Contains("votes") ? subDocument["votes"].ToInt32() : 0;
+            movie.imdb.id = subDocument.Contains("id") ? subDocument["id"].AsInt32 : 0;
           }
           movie.tomatoes = new Tomato();
-          //if (document.Contains("tomatoes"))
-          //{
-          //  var subDocument = document["tomatoes"].AsBsonDocument;
-          //  if (subDocument.Contains("viewer"))
-          //  {
-          //    var viewerDocument = subDocument["viewer"].AsBsonDocument;
-          //    movie.tomatoes.viewer = new TomatoViewer();
-          //    movie.tomatoes.viewer.rating = viewerDocument.Contains("rating") ? viewerDocument["rating"].AsDouble : 0.0;
-          //    movie.tomatoes.viewer.numReviews = viewerDocument.Contains("numReviews") ? (int)(viewerDocument["numReviews"].AsDouble) : 0;
-          //    movie.tomatoes.viewer.meter = viewerDocument.Contains("meter") ? (int)(viewerDocument["meter"].AsDouble) : 0;
-          //  }
-          //  movie.tomatoes.dvd = subDocument.Contains("dvd") ? subDocument["dvd"].AsString : string.Empty;
-          //  if (subDocument.Contains("critic"))
-          //  {
-          //    movie.tomatoes.critic = new TomatoCritic();
-          //    var criticDocument = subDocument["critic"].AsBsonDocument;
-          //    movie.tomatoes.critic.rating = criticDocument.Contains("rating") ? criticDocument["rating"].AsDouble : 0.0;
-          //    movie.tomatoes.critic.numReviews = criticDocument.Contains("numReviews") ? criticDocument["numReviews"].AsInt32 : 0;
-          //    movie.tomatoes.critic.meter = criticDocument.Contains("meter") ? criticDocument["meter"].AsInt32 : 0;
-          //  }
-          //  movie.tomatoes.production = subDocument.Contains("production") ? subDocument["production"].AsString : string.Empty;
-          //  movie.tomatoes.concensus = subDocument.Contains("consensus") ? subDocument["consensus"].AsString : string.Empty;
-          //  movie.tomatoes.lastUpdated = subDocument.Contains("lastUpdated") ? subDocument["lastUpdated"].ToUniversalTime() : DateTime.MinValue;
-          //  movie.tomatoes.rotten = subDocument.Contains("rotten") ? subDocument["rotten"].AsInt32 : 0;
-          //  movie.tomatoes.fresh = subDocument.Contains("fresh") ? subDocument["fresh"].AsInt32 : 0;
-          //}
+          if (document.Contains("tomatoes"))
+          {
+            var subDocument = document["tomatoes"].AsBsonDocument;
+            if (subDocument.Contains("viewer"))
+            {
+              var viewerDocument = subDocument["viewer"].AsBsonDocument;
+              movie.tomatoes.viewer = new TomatoViewer();
+              movie.tomatoes.viewer.rating = viewerDocument.Contains("rating") ? viewerDocument["rating"].ToDouble() : 0.0;
+              movie.tomatoes.viewer.numReviews = viewerDocument.Contains("numReviews") ? viewerDocument["numReviews"].ToInt32() : 0;
+              movie.tomatoes.viewer.meter = viewerDocument.Contains("meter") ? viewerDocument["meter"].ToInt32() : 0;
+            }
+            movie.tomatoes.dvd = subDocument.Contains("dvd") ? subDocument["dvd"].AsString : string.Empty;
+            if (subDocument.Contains("critic"))
+            {
+              movie.tomatoes.critic = new TomatoCritic();
+              var criticDocument = subDocument["critic"].AsBsonDocument;
+              movie.tomatoes.critic.rating = criticDocument.Contains("rating") ? criticDocument["rating"].ToDouble() : 0.0;
+              movie.tomatoes.critic.numReviews = criticDocument.Contains("numReviews") ? criticDocument["numReviews"].AsInt32 : 0;
+              movie.tomatoes.critic.meter = criticDocument.Contains("meter") ? criticDocument["meter"].AsInt32 : 0;
+            }
+            movie.tomatoes.production = subDocument.Contains("production") ? subDocument["production"].AsString : string.Empty;
+            movie.tomatoes.concensus = subDocument.Contains("consensus") ? subDocument["consensus"].AsString : string.Empty;
+            movie.tomatoes.lastUpdated = subDocument.Contains("lastUpdated") ? subDocument["lastUpdated"].ToUniversalTime() : DateTime.MinValue;
+            movie.tomatoes.rotten = subDocument.Contains("rotten") ? subDocument["rotten"].AsInt32 : 0;
+            movie.tomatoes.fresh = subDocument.Contains("fresh") ? subDocument["fresh"].AsInt32 : 0;
+          }
 
           movieList.Add(movie);
         }

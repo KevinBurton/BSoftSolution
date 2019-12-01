@@ -85,6 +85,7 @@
     <None Include="**/*" />
     <None Remove="obj\Debug\netcoreapp3.0\Razor\Pages\_ViewImports.cshtml.g.cs" />
     <None Remove="obj\Debug\netcoreapp3.0\Razor\Pages\Error.cshtml.g.cs" />
+    <None Include="**/*" />
   </ItemGroup>
 
   <ItemGroup>
@@ -129,7 +130,7 @@
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
       <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
-      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
