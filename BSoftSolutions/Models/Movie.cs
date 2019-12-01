@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace BSoftSolutions.Models
 {
+  [BsonIgnoreExtraElements]
   public class TomatoCritic
   {
     [BsonElement]
@@ -16,6 +17,7 @@ namespace BSoftSolutions.Models
     [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
     public int meter { get; set; }
   }
+  [BsonIgnoreExtraElements]
   public class TomatoViewer
   {
     [BsonElement]
@@ -28,6 +30,7 @@ namespace BSoftSolutions.Models
     [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
     public int meter { get; set; }
   }
+  [BsonIgnoreExtraElements]
   public class Tomato
   {
     [BsonElement]
@@ -52,6 +55,7 @@ namespace BSoftSolutions.Models
     [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
     public int fresh { get; set; }
   }
+  [BsonIgnoreExtraElements]
   public class Award
   {
     [BsonElement]
@@ -64,6 +68,7 @@ namespace BSoftSolutions.Models
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
     public string text { get; set; }
   }
+  [BsonIgnoreExtraElements]
   public class Imdb
   {
     [BsonElement]
@@ -76,6 +81,7 @@ namespace BSoftSolutions.Models
     [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
     public int id { get; set; }
   }
+  [BsonIgnoreExtraElements]
   public class Movie
   {
     [BsonElement]

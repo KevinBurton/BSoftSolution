@@ -41,8 +41,7 @@ namespace BSoftSolutions.Controllers
       try
       {
         repository.Open();
-        var r = repository.MovieList();
-        return r;
+        return repository.MovieList();
       }
       catch(Exception)
       {
