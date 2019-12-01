@@ -96,9 +96,35 @@ namespace BSoftSolutions.Implementations
         throw;  
       }
     }
-    public Dictionary<string, List<string>> MovieCastDictionary()
+    public Dictionary<string, List<string>> ActorMovieDictionary()
     {
-      throw new NotImplementedException();
+            try
+            {
+                var actorMovieDictionary = new Dictionary<string, List<string>>();
+                foreach(var movie in MongoCollection.AsQueryable<Movie>())
+                {
+                    if( movie.cast != null && movie.cast.Any() && !string.IsNullOrWhiteSpace(movie.title) )
+                    {
+                        foreach(var actor in movie.cast)
+                        {
+                            if(actorMovieDictionary.ContainsKey(actor))
+                            {
+                                actorMovieDictionary[actor].Add(movie.title);
+                            }
+                            else
+                            {
+                                actorMovieDictionary.Add(actor, new List<string>() { movie.title });
+                            }
+                        }
+                    }
+                }
+                return actorMovieDictionary;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.ToString());
+                throw;
+            }
+        }
     }
-  }
 }

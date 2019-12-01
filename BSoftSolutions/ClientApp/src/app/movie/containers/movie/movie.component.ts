@@ -33,8 +33,8 @@ export class MovieComponent {
                 error: err => this.errorMessage = err
             });
     }
-    getMovieCastDictionary(): void {
-        this.processor.MovieCastDictionary().
+    getActorMovieDictionary(): void {
+        this.processor.actorMovieDictionary().
             subscribe({
                 next: loc => {
                     this.movieCastDictionary = loc;

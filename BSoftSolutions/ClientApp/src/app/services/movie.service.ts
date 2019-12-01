@@ -28,11 +28,11 @@ export class MovieService {
             catchError(this.handleError)
         );
     }
-    public MovieCastDictionary(): Observable<any> {
-        const url = '/Movie/MovieCastDictionary';
+    public actorMovieDictionary(): Observable<any> {
+        const url = '/Movie/ActorMovieDictionary';
         return this.http.get<any>(url).pipe(
             tap((data) => {
-                console.log(`Movie Cast Dictionary: ${data.length}`);
+                console.log(`Actor Movie Dictionary: ${data.length}`);
             }),
             catchError(this.handleError)
         );

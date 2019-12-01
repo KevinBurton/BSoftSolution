@@ -55,14 +55,14 @@ namespace BSoftSolutions.Controllers
         }
       }
     }
-    // GET: /MovieCastDictionary
+    // GET: /ActorMovieDictionary
     [HttpGet]
-    [Route("MovieCastDictionary")]
-    public Dictionary<string, List<string>> MovieCastDictionary()
+    [Route("ActorMovieDictionary")]
+    public Dictionary<string, List<string>> ActorMovieDictionary()
     {
       var repository = new MongoRepository(ConnectionStrings.MongoDbConnectionString, ConnectionStrings.MongoDbName, ConnectionStrings.MongoCollectionName);
       repository.Open();
-      return repository.MovieCastDictionary();
+      return repository.ActorMovieDictionary();
     }
 
     // POST api/values
