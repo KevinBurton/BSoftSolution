@@ -28,65 +28,6 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
-    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-    <None Remove="ClientApp\src\app\shared\tamugeocode.ts" />
-    <None Remove="ClientApp\src\app\shared\tamuaddress.ts" />
-    <None Remove="ClientApp\src\app\shared\tamuoutputgeocode.ts" />
-    <None Remove="ClientApp\src\app\shared\movie.service.ts" />
-    <None Remove="ClientApp\src\app\movie\movie-list\movie-list.component.spec.ts" />
-    <None Remove="ClientApp\src\app\models\tamuaddress.ts" />
-    <None Remove="ClientApp\src\app\models\tamugeocode.ts" />
-    <None Remove="ClientApp\src\app\models\tamuoutputgeocode.ts" />
-    <None Remove="ClientApp\src\app\services\movie.service.ts" />
-    <None Remove="ClientApp\src\app\models\Theater.ts" />
-    <None Remove="ClientApp\src\app\models\Movie.ts" />
-    <None Remove="ClientApp\src\app\models\coordinate.ts" />
-    <None Remove="ClientApp\src\app\movie\movie.module.ts" />
-    <None Remove="ClientApp\src\app\app.component.html" />
-    <None Remove="ClientApp\src\app\app.component.ts" />
-    <None Remove="ClientApp\src\app\app.module.ts" />
-    <None Remove="ClientApp\src\app\app.server.module.ts" />
-    <None Remove="ClientApp\src\app\app-route.module.ts" />
-    <None Remove="ClientApp\src\test.ts" />
-    <None Remove="ClientApp\src\styles.css" />
-    <None Remove="ClientApp\src\polyfills.ts" />
-    <None Remove="ClientApp\src\main.ts" />
-    <None Remove="ClientApp\src\karma.conf.js" />
-    <None Remove="ClientApp\src\index.html" />
-    <None Remove="ClientApp\src\environments\environment.ts" />
-    <None Remove="ClientApp\src\assets\.gitkeep" />
-    <None Remove="ClientApp\browserslist" />
-    <None Remove="ClientApp\README.md" />
-    <None Remove="ClientApp\.gitignore" />
-    <None Remove="ClientApp\.editorconfig" />
-    <None Remove="ClientApp\src\app\shared\shared.module.ts" />
-    <None Remove="ClientApp\src\app\resume\resume.component.css" />
-    <None Remove="ClientApp\src\app\resume\resume.component.html" />
-    <None Remove="ClientApp\src\app\resume\resume.component.ts" />
-    <None Remove="ClientApp\src\app\page-not-found\page-not-found.component.css" />
-    <None Remove="ClientApp\src\app\page-not-found\page-not-found.component.html" />
-    <None Remove="ClientApp\src\app\page-not-found\page-not-found.component.ts" />
-    <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.css" />
-    <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.html" />
-    <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.ts" />
-    <None Remove="ClientApp\src\app\movie\containers\movie\movie.component.ts" />
-    <None Remove="ClientApp\src\app\movie\components\movie-list\movie-list.component.ts" />
-    <None Remove="ClientApp\src\app\.gitignore" />
-    <None Remove="ClientApp\src\app\home\home.component.html" />
-    <None Remove="ClientApp\src\app\home\home.component.ts" />
-    <None Remove="ClientApp\src\app\graph\graph.module.ts" />
-    <None Remove="ClientApp\src\app\geoprocessing\geoprocessing.component.html" />
-    <None Remove="ClientApp\src\app\geoprocessing\geoprocessing.component.ts" />
-    <None Remove="ClientApp\src\app\fetch-data\fetch-data.component.html" />
-    <None Remove="ClientApp\src\app\fetch-data\fetch-data.component.ts" />
-    <None Remove="ClientApp\src\app\counter\counter.component.html" />
-    <None Remove="ClientApp\src\app\counter\counter.component.ts" />
-    <None Remove="ClientApp\src\app\movie\containers\movie\movie.component.ts" />
-    <None Include="**/*" />
-    <None Remove="obj\Debug\netcoreapp3.0\Razor\Pages\_ViewImports.cshtml.g.cs" />
-    <None Remove="obj\Debug\netcoreapp3.0\Razor\Pages\Error.cshtml.g.cs" />
-    <None Include="**/*" />
-    <None Remove="ClientApp\src\app\models\user.ts" />
   </ItemGroup>
 
   <ItemGroup>
