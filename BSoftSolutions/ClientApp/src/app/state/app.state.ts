@@ -1,5 +1,5 @@
-import { MovieState } from '../movie/state/movie.reducer';
+import { UserState } from '../user/state/user.reducer';
 
 export interface State {
-  movie: MovieState;
+  user: UserState;
 }
