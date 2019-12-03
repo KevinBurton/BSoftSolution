@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MongoDB.Bson.Serialization;
 
 namespace BSoftSolutions
 {
@@ -25,6 +26,12 @@ namespace BSoftSolutions
         {
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
             services.AddSingleton<INeo4jDriver, Neo4jDriver>();
+            BsonClassMap.RegisterClassMap<Movie>();
+            //BsonClassMap.RegisterClassMap<Tomato>();
+            //BsonClassMap.RegisterClassMap<TomatoCritic>();
+            //BsonClassMap.RegisterClassMap<TomatoViewer>();
+            //BsonClassMap.RegisterClassMap<Award>();
+            //BsonClassMap.RegisterClassMap<Imdb>();
             services.AddControllers().AddNewtonsoftJson();
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory

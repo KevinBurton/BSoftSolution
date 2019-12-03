@@ -32,7 +32,7 @@ export class MovieService {
         const url = '/Movie/ActorMovieDictionary';
         return this.http.get<any>(url).pipe(
             tap((data) => {
-                console.log(`Actor Movie Dictionary: ${data.length}`);
+                console.log(`Actor Movie Dictionary: ${Object.keys(data).length}`);
             }),
             catchError(this.handleError)
         );

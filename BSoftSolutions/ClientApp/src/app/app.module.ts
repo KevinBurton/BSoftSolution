@@ -6,6 +6,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 
+import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -40,7 +42,9 @@ import { GraphModule } from './graph/graph.module';
     AppRouteModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+//      { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,11 +10,12 @@ export class MovieComponent {
     constructor(private processor: MovieService) {
 
     }
+    objectKeys = Object.keys;
     errorMessage: string = '';
     geocodeInput: string = '';
     movieList: Movie[] = [];
     databaseList: string[] = [];
-    movieCastDictionary: any = {};
+    actorMovieDictionary: any = {};
     getDatabaseList(): void {
         this.processor.DatabaseList().
             subscribe({
@@ -37,7 +38,7 @@ export class MovieComponent {
         this.processor.actorMovieDictionary().
             subscribe({
                 next: loc => {
-                    this.movieCastDictionary = loc;
+                    this.actorMovieDictionary = loc;
                 },
                 error: err => this.errorMessage = err
             });

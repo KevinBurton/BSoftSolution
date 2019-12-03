@@ -14,7 +14,15 @@
   </tbody>
 </table>
 <br/>
-<button id="movie-cast-button" (click)="getMovieCastDictionary()">Movie Cast Dictionary</button>
+<button id="actor-movie-button" (click)="getActorMovieDictionary()">Actor Movie Dictionary</button>
+<div *ngIf="actorMovieDictionary && objectKeys(actorMovieDictionary).length > 0">
+  <ul *ngFor="let item of actorMovieDictionary | keyvalue">
+    {{item.key}}
+    <li *ngFor="let m of item.value">
+      {{m}}
+    </li>
+  </ul>
+</div>
 <br/>
 <button id="movie-list-button" (click)="getMovieList()">Movie List</button>
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="movieList && movieList.length > 0">
