@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { UserEffects } from './state/user.effects';
 
 import { UserComponent } from './containers/user/user.component';
-import { LoginComponent } from '../login/containers/login/login.component';
+import { LoginComponent } from '../../api-authorization/login/login.component';
 
 import { userReducer } from './state/user.reducer';
 import { EffectsModule } from '@ngrx/effects';

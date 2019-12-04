@@ -7,9 +7,8 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from 'src/api-authorization/login/login.component';
 import { ResumeComponent } from './resume/resume.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { GeoProcessingComponent } from './geoprocessing/geoprocessing.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -17,8 +16,7 @@ const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'geo', component: GeoProcessingComponent },
     { path: 'resume', component: ResumeComponent, canActivate: [AuthorizeGuard] },
-    { path: 'counter', component: CounterComponent },
-    { path: 'fetch-data', component: FetchDataComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -27,8 +25,6 @@ const routes: Routes = [
   declarations: [
         HomeComponent,
         ResumeComponent,
-        CounterComponent,
-        FetchDataComponent,
         GeoProcessingComponent,
         PageNotFoundComponent
     ],

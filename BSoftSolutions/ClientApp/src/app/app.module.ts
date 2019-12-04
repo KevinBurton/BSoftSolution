@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
@@ -18,7 +19,7 @@ import { GraphModule } from './graph/graph.module';
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
+    NavMenuComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,6 +40,7 @@ import { GraphModule } from './graph/graph.module';
     EffectsModule.forRoot([]),
     MovieModule,
     GraphModule,
+    ApiAuthorizationModule,
     AppRouteModule,
     SharedModule
   ],
