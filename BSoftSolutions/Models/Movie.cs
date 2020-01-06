@@ -89,54 +89,54 @@ namespace BSoftSolutions.Models
     public string plot { get; set; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public IList<string> genres { get; set; }
+    public IList<string> genres { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-    public int runtime { get; set; }
+    public int runtime { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public string rated { get; set; }
+    public string rated { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public IList<string> cast { get; set; }
+    public IList<string> cast { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public string poster { get; set; }
+    public string poster { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public string title { get; set; }
+    public string title { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
     public string fullplot { get; set; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public IList<string> languages { get; set; }
+    public IList<string> languages { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public string released { get; set; }
+    public string released { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public IList<string> directors { get; set; }
+    public IList<string> directors { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public IList<string> writers { get; set; }
+    public IList<string> writers { get; }
     [BsonElement]
-    public Award awards { get; set; }
+    public Award awards { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public string lastupdated { get; set; }
+    public string lastupdated { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-    public int year { get; set; }
+    public int year { get; }
     [BsonElement]
     public Imdb imdb { get; set; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public IList<string> countries { get; set; }
+    public IList<string> countries { get; }
     [BsonElement]
     [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public string type { get; set; }
+    public string type { get; }
     [BsonElement]
-    public Tomato tomatoes { get; set; }
+    public Tomato tomatoes { get; }
   }
 }

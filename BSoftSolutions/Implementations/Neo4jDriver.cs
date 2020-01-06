@@ -19,10 +19,14 @@ namespace BSoftSolutions.Implementations
 
     public Neo4jDriver(IOptions<ConnectionStrings> settings)
     {
+      if(settings == null)
+      {
+        throw new ArgumentNullException(nameof(settings));
+      }
       var connectionStrings = settings.Value;
 
       //Use an IoC container and register as a Singleton
-      var url = connectionStrings.Neo4jDbConnectionString;
+      var uri = new Uri(connectionStrings.Neo4jDbConnectionString);
       var username = connectionStrings.Neo4jDbUsername;
       var password = connectionStrings.Neo4jDbPassword;
       var authToken = AuthTokens.None;
@@ -31,7 +35,7 @@ namespace BSoftSolutions.Implementations
         authToken = AuthTokens.Basic(username, password);
 
 
-      _driver = GraphDatabase.Driver(url, authToken);
+      _driver = GraphDatabase.Driver(uri, authToken);
 
     }
   }

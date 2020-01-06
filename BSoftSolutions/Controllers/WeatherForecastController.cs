@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BSoftSolutions.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using BSoftSolutions.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BSoftSolutions.Controllers
 {
@@ -27,7 +26,7 @@ namespace BSoftSolutions.Controllers
         [HttpGet]
         [Route("")]
         [Route("Get")]  
-        public IEnumerable<WeatherForecast> Get()
+        public static IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
