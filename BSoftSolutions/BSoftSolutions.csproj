@@ -31,6 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="ClientApp\auth_config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\models\tamuaddress.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\tamugeocode.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\tamuoutputgeocode.ts" />
@@ -42,7 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClientApp\src\app\graph\components\graph-list\" />
+    <Folder Include="ClientApp\src\app\login\" />
     <Folder Include="ClientApp\src\app\movie\" />
+    <Folder Include="ClientApp\src\app\login-menu\" />
+    <Folder Include="ClientApp\src\app\logout\" />
+    <Folder Include="ClientApp\src\app\profile\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
     <Folder Include="Implementations\" />

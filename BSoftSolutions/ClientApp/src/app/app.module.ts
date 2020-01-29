@@ -5,9 +5,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-
-import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
+import { InterceptorService } from './auth/interceptor.service';
+import { AuthModule } from './auth/auth.module';
 
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
@@ -40,12 +39,12 @@ import { GraphModule } from './graph/graph.module';
     EffectsModule.forRoot([]),
     MovieModule,
     GraphModule,
-    ApiAuthorizationModule,
     AppRouteModule,
+    AuthModule,
     SharedModule
   ],
   providers: [
-//      { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+      { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })
