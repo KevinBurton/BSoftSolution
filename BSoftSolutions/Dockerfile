@@ -25,6 +25,4 @@ RUN dotnet publish "BSoftSolutions.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY --from=build BSoftSolutions/node-v12.11.1-linux-x64.tar.gz .
-RUN tar -C /usr/local --strip-components 1 -xvzf node-v12.11.1-linux-x64.tar.gz
 ENTRYPOINT ["dotnet", "BSoftSolutions.dll"]
