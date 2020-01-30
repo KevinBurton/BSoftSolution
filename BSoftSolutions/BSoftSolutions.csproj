@@ -50,7 +50,6 @@
     <Folder Include="ClientApp\src\app\movie\" />
     <Folder Include="ClientApp\src\app\login-menu\" />
     <Folder Include="ClientApp\src\app\logout\" />
-    <Folder Include="ClientApp\src\app\profile\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
     <Folder Include="Implementations\" />

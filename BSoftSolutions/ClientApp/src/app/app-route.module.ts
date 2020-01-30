@@ -7,7 +7,6 @@ import { AuthGuard } from './auth/auth.guard';
 
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { LoginComponent } from './login/login.component';
 import { ResumeComponent } from './resume/resume.component';
 import { GeoProcessingComponent } from './geoprocessing/geoprocessing.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -17,7 +16,6 @@ const routes: Routes = [
     { path: 'geo', component: GeoProcessingComponent },
     { path: 'resume', component: ResumeComponent, canActivate: [AuthGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-    { path: 'login', component: LoginComponent },
     { path: '**', component: PageNotFoundComponent }
 ];
 

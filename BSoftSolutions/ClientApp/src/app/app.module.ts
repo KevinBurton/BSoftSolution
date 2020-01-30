@@ -7,13 +7,20 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { InterceptorService } from './auth/interceptor.service';
 import { AuthModule } from './auth/auth.module';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HighlightModule } from 'ngx-highlightjs';
+import json from 'highlight.js/lib/languages/json';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AppRouteModule } from './app-route.module';
 import { MovieModule } from './movie/movie.module';
 import { GraphModule } from './graph/graph.module';
+
+export function hljsLanguages() {
+  return [{ name: 'json', func: json }];
+}
 
 @NgModule({
   declarations: [
@@ -40,6 +47,11 @@ import { GraphModule } from './graph/graph.module';
     MovieModule,
     GraphModule,
     AppRouteModule,
+    NgbModule,
+//    HighlightModule.forRoot({
+//      languages: hljsLanguages
+//    }),
+    FontAwesomeModule,
     AuthModule,
     SharedModule
   ],
