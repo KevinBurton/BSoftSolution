@@ -46,10 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClientApp\src\app\graph\components\graph-list\" />
-    <Folder Include="ClientApp\src\app\login\" />
     <Folder Include="ClientApp\src\app\movie\" />
     <Folder Include="ClientApp\src\app\login-menu\" />
-    <Folder Include="ClientApp\src\app\logout\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
     <Folder Include="Implementations\" />
