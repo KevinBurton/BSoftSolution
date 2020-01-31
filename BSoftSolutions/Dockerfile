@@ -20,6 +20,8 @@ WORKDIR "/src/BSoftSolutions"
 RUN dotnet build "BSoftSolutions.csproj" -c Release -o /app/build
 
 FROM build AS publish
+RUN dotnet dev-certs https --clean
+RUN dotnet dev-certs https -t
 RUN dotnet publish "BSoftSolutions.csproj" -c Release -o /app/publish
 
 FROM base AS final

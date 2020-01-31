@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Movie } from '../../models/movie';
+import { Movie } from '../../models/Movie';
 
 export enum MovieActionTypes {
     LoadMovies = '[Movie] Initiate load of movies from DB',

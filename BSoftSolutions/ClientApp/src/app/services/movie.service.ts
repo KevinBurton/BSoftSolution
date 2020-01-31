@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, ObservableInput, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
-import { Movie } from '../models/movie';
+import { Movie } from '../models/Movie';
 
 @Injectable({
     providedIn: 'root'

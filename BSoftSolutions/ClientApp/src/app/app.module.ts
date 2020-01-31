@@ -17,6 +17,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AppRouteModule } from './app-route.module';
 import { MovieModule } from './movie/movie.module';
 import { GraphModule } from './graph/graph.module';
+import { SignupComponent } from './signup/signup.component';
 
 export function hljsLanguages() {
   return [{ name: 'json', func: json }];
@@ -25,7 +26,8 @@ export function hljsLanguages() {
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
