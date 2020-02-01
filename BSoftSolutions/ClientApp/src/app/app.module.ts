@@ -7,8 +7,6 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { InterceptorService } from './auth/interceptor.service';
 import { AuthModule } from './auth/auth.module';
-import { HighlightModule } from 'ngx-highlightjs';
-import json from 'highlight.js/lib/languages/json';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -17,10 +15,6 @@ import { MovieModule } from './movie/movie.module';
 import { GraphModule } from './graph/graph.module';
 import { SignupComponent } from './signup/signup.component';
 import { LoadingComponent } from './loading/loading.component';
-
-export function hljsLanguages() {
-  return [{ name: 'json', func: json }];
-}
 
 @NgModule({
   declarations: [
@@ -49,9 +43,6 @@ export function hljsLanguages() {
     MovieModule,
     GraphModule,
     AppRouteModule,
-//    HighlightModule.forRoot({
-//      languages: hljsLanguages
-//    }),
     AuthModule,
     SharedModule
   ],
