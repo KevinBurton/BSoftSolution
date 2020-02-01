@@ -7,7 +7,6 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { InterceptorService } from './auth/interceptor.service';
 import { AuthModule } from './auth/auth.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HighlightModule } from 'ngx-highlightjs';
 import json from 'highlight.js/lib/languages/json';
 import { SharedModule } from './shared/shared.module';
@@ -17,6 +16,7 @@ import { AppRouteModule } from './app-route.module';
 import { MovieModule } from './movie/movie.module';
 import { GraphModule } from './graph/graph.module';
 import { SignupComponent } from './signup/signup.component';
+import { LoadingComponent } from './loading/loading.component';
 
 export function hljsLanguages() {
   return [{ name: 'json', func: json }];
@@ -26,7 +26,8 @@ export function hljsLanguages() {
   declarations: [
     AppComponent,
     NavMenuComponent,
-    SignupComponent
+    SignupComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -48,7 +49,6 @@ export function hljsLanguages() {
     MovieModule,
     GraphModule,
     AppRouteModule,
-    NgbModule,
 //    HighlightModule.forRoot({
 //      languages: hljsLanguages
 //    }),
