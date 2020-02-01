@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Observable } from 'rxjs';
+import { faUser, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login-menu',
@@ -10,6 +11,9 @@ import { Observable } from 'rxjs';
 export class LoginMenuComponent implements OnInit {
   public isAuthenticated: Observable<boolean>;
   public userName: Observable<any>;
+
+  faUser = faUser;
+  faPowerOff = faPowerOff;
 
   constructor(private authorizeService: AuthService) { }
 

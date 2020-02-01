@@ -10,7 +10,6 @@ import { AuthModule } from './auth/auth.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HighlightModule } from 'ngx-highlightjs';
 import json from 'highlight.js/lib/languages/json';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -53,7 +52,6 @@ export function hljsLanguages() {
 //    HighlightModule.forRoot({
 //      languages: hljsLanguages
 //    }),
-    FontAwesomeModule,
     AuthModule,
     SharedModule
   ],

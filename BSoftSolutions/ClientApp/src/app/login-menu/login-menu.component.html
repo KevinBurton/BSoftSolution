@@ -1,9 +1,10 @@
 <ul class="navbar-nav" *ngIf="isAuthenticated | async">
   <li>
-    <a class="nav-link text-dark" [routerLink]="['/profile']">Profile</a>
+    <a class="nav-link text-dark" [routerLink]="['/profile']"><fa-icon [icon]="faUser" class="mr-3"></fa-icon> Profile</a>
   </li>
 
   <li>
+    <fa-icon [icon]="faPowerOff" class="mr-3"></fa-icon>
     <button class="btn btn-primary btn-margin"
             id="qsLogoutBtn"
             (click)="authorizeService.logout()">
