@@ -1,0 +1,14 @@
+h1,h3,li {
+  color:white;
+}
+h1,h3 {
+    font-family: BebasNeue-Bold;
+}
+h1 {
+    font-size: 9rem;
+    color: white;
+}
+
+li,a {
+    font-family: BebasNeue-Regular
+}

@@ -1,3 +1,37 @@
 h1,h3,li {
   color:white;
 }
+h1,h3 {
+    font-family: BebasNeue-Bold;
+}
+h1 {
+    font-size: 9rem;
+    animation-name: company-animation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+@keyframes company-animation {
+  0% {
+    color: white;
+  }
+
+  25% {
+    color: green;
+  }
+
+  50% {
+    color: red;
+  }
+
+  75% {
+    color: yellow;
+  }
+
+  100% {
+    color: white;
+  }
+}
+li,a {
+    font-family: BebasNeue-Regular
+}

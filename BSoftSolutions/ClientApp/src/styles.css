@@ -19,3 +19,18 @@ body {
   background-color: #cccccc;
   background-size: 1600px 760px;
 }
+@font-face {
+  font-family: "BebasNeue-Bold";
+  src: url("assets/BebasNeue-Bold.otf");
+}
+
+@font-face {
+  font-family: "BebasNeue-Regular";
+  src: url("assets/BebasNeue-Regular.otf");
+}
+
+@font-face {
+  font-family: "BebasNeue-Thin";
+  src: url("assets/BebasNeue-Thin.otf");
+}
+

@@ -3,8 +3,9 @@ import { GeoProcessor } from '../services/geoprocessor.service';
 import { ICoordinate } from '../models/coordinate';
 
 @Component({
-    selector: 'app-geoprocessing',
-    templateUrl: './geoprocessing.component.html'
+  selector: 'app-geoprocessing',
+  templateUrl: './geoprocessing.component.html',
+  styleUrls: ['./geoprocessing.component.css']
 })
 export class GeoProcessingComponent {
     constructor(private processor: GeoProcessor) {
