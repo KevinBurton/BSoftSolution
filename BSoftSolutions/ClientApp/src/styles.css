@@ -14,3 +14,8 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+body {
+  background-image: url("assets/front-squat.jpg");
+  background-color: #cccccc;
+  background-size: 1600px 760px;
+}
