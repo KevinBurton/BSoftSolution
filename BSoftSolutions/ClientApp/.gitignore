@@ -26,6 +26,7 @@
 !.vscode/extensions.json
 
 # misc
+auth0_config.json
 /.sass-cache
 /connect.lock
 /coverage
