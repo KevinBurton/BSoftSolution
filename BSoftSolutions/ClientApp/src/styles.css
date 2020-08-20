@@ -15,9 +15,11 @@ code {
   border-color: #1861ac;
 }
 body {
+  height: 270px;
   background-image: url("assets/front-squat.jpg");
   background-color: #cccccc;
-  background-size: 1600px 760px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 @font-face {
   font-family: "BebasNeue-Bold";
